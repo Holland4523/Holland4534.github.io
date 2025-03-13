@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Sales Training Platform</title>
+    <style>
+        /* Base styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f5f5f5;
+            background-color: #121212;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a1a1a;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4b95dd;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #f5f5f5;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #b0b0b0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #4b95dd;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #3a7ab7;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-top: 0;
+            color: #4b95dd;
+        }
+        
+        /* Demo Section */
+        .demo {
+            padding: 60px 0;
+            background-color: #1e1e1e;
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .demo-image {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chat-demo {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            word-break: break-word;
+        }
+        
+        .ai-message {
+            background-color: #3a3a3a;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: #4b95dd;
+            align-self: flex-end;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            border-top: 1px solid #444;
+            margin-top: 10px;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+        }
+        
+        .chat-input button {
+            background-color: #4b95dd;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 0;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pricing-card {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.6rem;
+            margin-top: 0;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #4b95dd;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #3a3a3a;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+            background-color: #1e1e1e;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            padding: 40px 0;
+            color: #b0b0b0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #fff;
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #f5f5f5;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Simple popup for demo */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .popup-content {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .popup-content h2 {
+            margin-top: 0;
+        }
+        
+        .close-popup {
+            background-color: #4b95dd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SalesTrainer AI</div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master the Art of Sales with AI-Powered Training</h1>
+            <p>Our platform leverages cutting-edge AI technology to create immersive, realistic sales scenarios that help your team close more deals using proven techniques.</p>
+            <a href="#demo" class="cta-button">Try Demo</a>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Platform Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Interactive Sales Simulations</h3>
+                    <p>Practice sales pitches with our AI customer that responds realistically to your approach, offering objections and feedback just like a real prospect.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Customizable Scenarios</h3>
+                    <p>Upload your own training materials and customize scenarios to match your specific industry, product, and customer types.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Performance Analytics</h3>
+                    <p>Track progress with detailed metrics on win rates, objection handling, and conversation quality to identify areas for improvement.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Command-Based Control</h3>
+                    <p>Use simple text commands to adjust difficulty, review transcripts, and manage your training sessions effortlessly.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Expert Sales Techniques</h3>
+                    <p>Learn from the best with training scenarios based on proven sales methodologies and techniques from industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Real-Time Feedback</h3>
+                    <p>Receive instant feedback on your performance with actionable suggestions to improve your sales approach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <div class="demo-container">
+                <div class="demo-image">
+                    <img src="/api/placeholder/400/320" alt="Sales Training Dashboard" />
+                </div>
+                <div class="chat-demo">
+                    <div class="chat-messages">
+                        <div class="message ai-message">Hello, I'm interested in learning more about your pest control services.</div>
+                        <div class="message user-message">Hi there! I'd be happy to tell you about our services. We offer comprehensive pest control solutions for both residential and commercial properties.</div>
+                        <div class="message ai-message">That sounds good, but I've heard your competitors offer a better price. Why should I choose your company?</div>
+                        <div class="message user-message">Great question! While some companies might offer a lower initial price, our service includes quarterly treatments, a satisfaction guarantee, and eco-friendly solutions that are safe for children and pets.</div>
+                        <div class="message ai-message">Hmm, I'm still not convinced. I need to think about it and talk to my partner.</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type your response..." id="demo-input">
+                        <button onclick="simulateResponse()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing Plans</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$199<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 5 users</li>
+                        <li>10 pre-built scenarios</li>
+                        <li>Basic analytics</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="showSignup(event)">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Professional</h3>
+                    <div class="price">$399<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>Up to 20 users</li>
+                        <li>25 pre-built scenarios</li>
+                        <li>Custom scenario creation</li>
+                        <li>Advanced analytics</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="showSignup(event)">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited users</li>
+                        <li>Unlimited scenarios</li>
+                        <li>Custom integrations</li>
+                        <li>White-labeling</li>
+                        <li>Dedicated support</li>
+                        <li>On-premise deployment available</li>
+                    </ul>
+                    <a href="#" class="cta-button" onclick="showSignup(event)">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Sales Team?</h2>
+            <p>Join hundreds of companies already using SalesTrainer AI to boost their sales performance.</p>
+            <a href="#" class="cta-button" onclick="showSignup(event)">Get Started Today</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SalesTrainer AI</h3>
+                    <p>The ultimate AI-powered sales training platform to help your team master the art of selling.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Knowledge Base</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Webinars</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="mailto:info@salestrainerai.com">info@salestrainerai.com</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SalesTrainer AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Popup for demo purposes -->
+    <div class="popup" id="signup-popup">
+        <div class="popup-content">
+            <h2>Coming Soon!</h2>
+            <p>This is a demonstration website. In a real implementation, this would connect to a sign-up form or contact system.</p>
+            <button class="close-popup" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple JavaScript for the demo
+        function simulateResponse() {
+            const input = document.getElementById('demo-input');
+            if (input.value.trim() === '') return;
+            
+            // Add user message
+            const chatMessages = document.querySelector('.chat-messages');
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.textContent = input.value;
+            chatMessages.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Simulate AI response after a delay
+            setTimeout(() => {
+                const aiResponses = [
+                    "That's an interesting point. Can you tell me more about your guarantee policy?",
+                    "I understand, but I'm still concerned about the cost. Do you offer any discounts for long-term contracts?",
+                    "I appreciate your thorough explanation. I think I'm ready to schedule a consultation now.",
+                    "That makes sense, but my neighbor used another service and was very happy. What makes your approach different?",
+                    "I need some time to consider. Can you send me some information I can review later?"
+                ];
+                
+                const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+                const aiMessage = document.createElement('div');
+                aiMessage.className = 'message ai-message';
+                aiMessage.textContent = randomResponse;
+                chatMessages.appendChild(aiMessage);
+                
+                // Scroll to bottom again
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+        }
+        
+        function showSignup(event) {
+            event.preventDefault();
+            document.getElementById('signup-popup').style.display = 'flex';
+        }
+        
+        function closePopup() {
+            document.getElementById('signup-popup').style.display = 'none';
+        }
+        
+        // Allow Enter key to send messages in demo
+        document.getElementById('demo-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                simulateResponse();
+            }
+        });
+    </script>
+</body>
+</html>
